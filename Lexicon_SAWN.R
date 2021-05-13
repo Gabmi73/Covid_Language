@@ -60,7 +60,7 @@ SAWN_create <- function(s, a, c) {
 # to reduce polipathy: select all non duplicated by lemma
 # choose of the most intense associated value of a word
 
-S_AWN <- SAWN_create (sentix, affect, category) %>% 
+S_AWN <- SAWN_create(sentix, affect, category) %>% 
   distinct() %>% 
   filter(!str_detect(lemma, "[:punct:]")) %>% 
   group_by(lemma) %>%
