@@ -5,55 +5,65 @@ library(tidyverse)
 #    http://valeriobasile.github.io/twita/sentix.html
 # 2) WordNet Affect 1.1
 #    https://wndomains.fbk.eu/wnaffect.html
+#    both files of synsets and categorization heierachy are also available at
+#    https://github.com/orthoressyco/WNAffect/tree/master/src/main/resources
 
-# to get 2) download local in your path
+sentix <- "http://valeriobasile.github.io/twita/sentix.gz"
+affect <- "https://raw.githubusercontent.com/orthoressyco/WNAffect/master/src/main/resources/a-synsets-30.xml"
+category <- "https://raw.githubusercontent.com/orthoressyco/WNAffect/master/src/main/resources/a-hierarchy.xml"
 
-sentix_url <- "http://valeriobasile.github.io/twita/sentix.gz"
-wna_file <- "./wn-affect-1.1/a-synsets-30.xml"
-hier_file <- "./wn-affect-1.1/a-hierarchy.xml"
-
-ALI_Create <- function(sentix, wna, hier) {
+SAWN_create <- function(s, a, c) {
   require(xml2)
   require(data.table)
   
-  ## 1) Sentix scrape and renaming
-  sentix <- data.table::fread(sentix, colClasses = c(V3 = "character"),
-                              encoding = "UTF-8") %>% 
+  ## 1) Sentix
+  sx <- data.table::fread(s, colClasses = c(V3 = "character"),
+                          encoding = "UTF-8") %>% 
     rename(lemma = V1, pos = V2, synset = V3, pos_WN = V4,
            neg_WN = V5, polarity = V6, intensity = V7) %>%
     mutate(polarity = round(polarity,3),
            intensity = round(intensity,3),
            lemma = tolower(lemma))
   
-  ## 2) Parsing WNA synsets
-  affect <- bind_rows(synset = c(xml_attr(xml_find_all(read_xml(wna), ".//noun-syn"), "id"),
-                                 xml_attr(xml_find_all(read_xml(wna), ".//adj-syn"), "id"),
-                                 xml_attr(xml_find_all(read_xml(wna), ".//verb-syn"), "id"),
-                                 xml_attr(xml_find_all(read_xml(wna), ".//adv-syn"), "id")),
-                      affect = c(xml_attr(xml_find_all(read_xml(wna), ".//noun-syn"), "categ"),
-                                 xml_attr(xml_find_all(read_xml(wna), ".//adj-syn"), "categ"),
-                                 xml_attr(xml_find_all(read_xml(wna), ".//verb-syn"), "categ"),
-                                 xml_attr(xml_find_all(read_xml(wna), ".//adv-syn"), "categ"))) %>% 
-    mutate(synset = str_remove_all(synset, "[:alpha:]#"))
+  ## 2) AffectWordNet
+  syn_n <- bind_rows(syn_aff = xml_attr(xml_find_all(read_xml(a), ".//noun-syn"), "id"),
+                     word = xml_attr(xml_find_all(read_xml(a), ".//noun-syn"), "categ")) %>% 
+    mutate(syn_aff = str_remove_all(syn_aff, "[:alpha:]#"))        
   
-  ## 3) Parsing WNA Hierarchy
-  hierarchy <- bind_rows(
-    affect = xml_attr(xml_find_all(read_xml(hier), ".//categ"), "name"),
-    category = xml_attr(xml_find_all(read_xml(hier), ".//categ"), "isa"))
+  syn_d <- bind_rows(syn_aff = c(xml_attr(xml_find_all(read_xml(a), ".//adj-syn"), "noun-id"),
+                                 xml_attr(xml_find_all(read_xml(a), ".//verb-syn"), "noun-id"),
+                                 xml_attr(xml_find_all(read_xml(a), ".//adv-syn"), "noun-id")),
+                     synset = c(xml_attr(xml_find_all(read_xml(a), ".//adj-syn"), "id"),
+                                xml_attr(xml_find_all(read_xml(a), ".//verb-syn"), "id"),
+                                xml_attr(xml_find_all(read_xml(a), ".//adv-syn"), "id"))) %>%
+    mutate(syn_aff = str_remove_all(syn_aff, "[:alpha:]#"),
+           synset = str_remove_all(synset, "[:alpha:]#"))
   
-  ah <- affect %>% left_join(hierarchy)                      
+  cat <- bind_rows(word = xml_attr(xml_find_all(read_xml(c), ".//categ"), "name"),
+                   category = xml_attr(xml_find_all(read_xml(c), ".//categ"), "isa"))
   
-  ALI <- sentix %>% 
-    left_join(ah) %>% 
+  # merging synsets and categorization
+  awn <- syn_n %>% 
+    left_join(syn_d) %>% 
+    left_join(cat) %>% 
+    mutate(synset = ifelse(is.na(synset), syn_aff, synset)) %>% 
+    select(-syn_aff)
+  
+  # merging AffectWordNet with sentix            
+  all <- sx %>% 
+    left_join(awn) %>% 
     tibble()
 }
 
-ALI <- ALI_Create(sentix_url, wna_file, hier_file) %>%
+# Get lookup table
+# some cleaning: get rid of full rows duplicated, keeping only unigrams
+# to reduce polipathy: select all non duplicated by lemma
+# choose of the most intense associated value of a word
+
+S_AWN <- SAWN_create (sentix, affect, category) %>% 
   distinct() %>% 
-  group_by(lemma) %>% 
-  distinct(pos, polarity, intensity, affect, category) %>% 
+  filter(!str_detect(lemma, "[:punct:]")) %>% 
+  group_by(lemma) %>%
+  distinct(pos, polarity, intensity, word, category) %>% 
   filter(intensity == max(intensity)) %>% 
   ungroup()
-
-
-remove("sentix_url", "wna_file", "hier_file", "ALI_Create")
