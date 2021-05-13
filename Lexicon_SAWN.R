@@ -1,6 +1,6 @@
 library(tidyverse)
 
-# ALI AffectLexiconItalian, result from mapping:
+# Sentix-AffectWordNet is the result from mapping:
 # 1) Sentix 
 #    http://valeriobasile.github.io/twita/sentix.html
 # 2) WordNet Affect 1.1
@@ -28,7 +28,7 @@ SAWN_create <- function(s, a, c) {
   ## 2) AffectWordNet
   syn_n <- bind_rows(syn_aff = xml_attr(xml_find_all(read_xml(a), ".//noun-syn"), "id"),
                      word = xml_attr(xml_find_all(read_xml(a), ".//noun-syn"), "categ")) %>% 
-    mutate(syn_aff = str_remove_all(syn_aff, "[:alpha:]#"))        
+           mutate(syn_aff = str_remove_all(syn_aff, "[:alpha:]#"))        
   
   syn_d <- bind_rows(syn_aff = c(xml_attr(xml_find_all(read_xml(a), ".//adj-syn"), "noun-id"),
                                  xml_attr(xml_find_all(read_xml(a), ".//verb-syn"), "noun-id"),
@@ -36,8 +36,8 @@ SAWN_create <- function(s, a, c) {
                      synset = c(xml_attr(xml_find_all(read_xml(a), ".//adj-syn"), "id"),
                                 xml_attr(xml_find_all(read_xml(a), ".//verb-syn"), "id"),
                                 xml_attr(xml_find_all(read_xml(a), ".//adv-syn"), "id"))) %>%
-    mutate(syn_aff = str_remove_all(syn_aff, "[:alpha:]#"),
-           synset = str_remove_all(synset, "[:alpha:]#"))
+           mutate(syn_aff = str_remove_all(syn_aff, "[:alpha:]#"),
+                  synset = str_remove_all(synset, "[:alpha:]#"))
   
   cat <- bind_rows(word = xml_attr(xml_find_all(read_xml(c), ".//categ"), "name"),
                    category = xml_attr(xml_find_all(read_xml(c), ".//categ"), "isa"))
