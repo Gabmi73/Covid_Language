@@ -1,13 +1,10 @@
 # Get vax_ling from script 02_Linguistic_A
-# Get Sentix AffectWordNet (from GET_SAWN)
-
+# Get Sentix AffectWordNet (from Lexicon_SAWN get table S_AWN)
 library(tidyverse)
 
-stopwords <- tibble(lemma = c("essere","avere","fare","dovere",
-                              "potere","volere", "anche", 
-                              "come", "quando", "dove",
-                              "ovunque", "dovunque", "chiunque",                               "perché", "poiché", "affinché",
-                              "dopodiche", "quanto","su", "giù",                               "ora", "appena"))
+stopwords <- tibble(lemma = c("essere","avere","fare","dovere", "potere","volere", "anche", 
+                              "come", "quando", "dove", "ovunque", "dovunque", "chiunque",
+                              "perché", "poiché", "affinché", "dopodiche", "quanto","su", "giù",  "ora", "appena"))
 
 vax_clean <-vax_ling %>%
   select(c(doc_id, token_id, date, token, lemma, pos = upos, 
