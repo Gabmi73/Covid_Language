@@ -8,13 +8,9 @@
 ## **Project Overview**
 
 - Estratto, tramite l'API di Twitter, un corpus di circa 65.000 tweets in linuga italiana, nell'arco di due mesi, dal 15 Marzo 2021 al 16 Maggio 2021, coincidenti con il periodo di maggior discussione del tema "vaccini anticovid" nell'opinione pubblica.
-- Creata una lookup table in formato csv con il lessico polarizzato per la lingua italiana, adattato dal Sentix (Basile e Nissim, 2013) a cui è stata aggiunta la classificazione e la gerarchia della semantica affettiva di WordnetAffect (Strapparava e Valitutti, 2004, 2006).
-L'obiettivo è la creazione uno strumento unico e agile per l'analisi del sentiment e del linguaggio affettivo in lingua italiana,
-utilizzabile nel text mining non supervisionato di tipo *lexicon based*.
-- Analisi linguistica dei tweets: frequenze, misure lessicometriche, parti del discorso, n-grams, key-words, co-occorrenze, concordanze.
-- Analisi di: Sentiment, Emoticons, Linguaggio Affettivo, Topics.
-- Questo progetto è preliminare al secondo: creazione di un modello di classificazione e un labelled training database (NEG vs POS)
-per la Sentiment Analisi dei tweets in relazione al tema dei vaccini.
+- Analisi linguistica dei tweets: frequenze, misure lessicometriche, parti del discorso e wordcloud.
+- Analisi del sentiment polarizzato positivo vs negativo e del sentiment delle Emojis.
+- Questo progetto è anche preliminare ai modelli di Machine e Deep Learning del secondo: creazione di un databese sia labelled (NEG vs POS training/test) sia unlabelled per le predictions di altri modelli.
 
 ### **Codice e risorse**
 
