@@ -1,7 +1,7 @@
 ### *STATISTICHE*
 Query sui seguenti hashtags: #vaccinoCovid OR #VaccinoAntiCovid OR #vaccino OR #PfizerVaccine OR #AstraZeneca. Estrazione senza retweets.
 ![tab1](/images/Descritpives_01.png)
-Per le statistiche lessicali sono state tralasciate le analisi della ricchezza del vocabolario, poiché affette da distorsioni dovute all'altissimo numero delle occorrenze.
+Le seguenti statistiche lessicali sono comprendono gli indici della ricchezza del vocabolario, poiché affetti da distorsioni dovuti all'altissimo numero delle occorrenze.
 ![tab2](/images/Lexicomentry_02.png)
 Basandosi solo sulle frequenze del corpus pulito, si può apprezzare, con le dovute cautele, un vocabolario con un discreto livello di ricchezza lessicale: a fronte di una riduzione del 60% dei tokens, rispetto al testo originale intero, i types sono scesi poco meno del 13%.
 
@@ -18,18 +18,17 @@ Il Grafico 1 mostra la frequenza delle parti del discorso denotando un elevato n
 
 3. Creazione di una categoria separata "NEGATOR" comprendente i più comuni e frequenti termini negativizzanti: "non, no, mai, senza, neppure, neache, nemmeno".
 
-4. Riduzione delle Features: rimozione delle parti del discorso prive di valenza semantica, mantenendo solo: nomi, aggettivi, verbi, avverbi e i negatori.
+4. Riduzione delle Features: rimozione delle parti del discorso prive di valenza semantica, mantenendo solo: nomi, aggettivi, verbi, avverbi e i negatori. Rimossi inoltri alcuni avverbi di uso molto frequente e poco significiativi. (es. ora, più, adesso ecc.)
 
 5. GESTIONE DI NEGATORI, POLISEMIA E TF-IDF
 
-    L'approccio lexicon-based non consente una gestione puntuale dei termini positivi, o negativi, la cui polarità viene ribaltata quando preceduti dal negatore (es. "bello vs non bello, brutto vs non brutto" ecc). Il lessico ISL inoltre non li contiene; per mantenere un computo complessivo del sentiment, quantomeno più prossimo al valore reale, seppur con i limiti del caso, ho deciso di attribuire il punteggio -1 ai seguenti avverbi, preposizioni e congiunzioni più comuni: non, no, mai, senza, neanche, neppure, nemmeno. Alquanto complessa e senza sostanziali differenze la gestione dei negatori che ho testato tramite analisi dei bigrammi, in alcuni casi anche trigrammi.
+    L'approccio metodologico lexicon-based non consente una gestione puntuale dei termini positivi, o negativi, la cui polarità viene ribaltata quando preceduti dal negatore (es. "bello vs non bello, brutto vs non brutto" ecc). Il lessico ISL inoltre non li contiene; per mantenere un computo complessivo del sentiment quanto più possibile prossimo al valore effettivo, seppur con i limiti del caso, ho deciso di attribuire il punteggio -1 agli avverbi, preposizioni e congiunzioni della lista "NEGATOR". Alquanto complessa e senza sostanziali differenze la gestione dei negatori che ho testato tramite analisi degli *n*-grams.
 
     Il totale dei negatori rappresenta comunque una minima parte del vocabolario, pari a n 29115/581001 (ovvero solo il 5% dei token nel corpus cleaned)
 
     Ho rinunciato alla questione della polisemia e della sua disambiguazione in quanto al limite dell'impossibile per questa metodologia.
 
-    Ho valutato inoltre non utile l'estrazione ed analisi dei termini peculiari con TF-IDF: innanzitutto manca un raggruppamento dotato di senso dei tweets, che quindi vengono considerati come singoli documenti. La matrice termini-per-documenti(oltre 64.000) non ha molto senso. Inoltre la stragrande maggioranza dei termini a bassa/unica frequenza sono errori di digitazione.
-
+    Ho valutato inoltre non utile l'estrazione ed analisi dei termini peculiari con la formula TF-IDF: innanzitutto manca un raggruppamento dotato di senso dei tweets, che quindi vengono considerati come singoli documenti. La matrice DTM documenti(oltre 64.000)-per-termini non ha molto senso. Inoltre la stragrande maggioranza dei termini a bassa/unica frequenza dei tweets è risultata comprendere gli errori di digitazione.
 
 
 ### *ANALISI DEL SENTIMENT*
