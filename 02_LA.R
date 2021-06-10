@@ -4,7 +4,7 @@
 library(tidyverse)
 library(udpipe)
 # udpipe_download_model(language = "italian-postwita")
-umodel_ita <- udpipe_load_model(file = './italian-postwita-ud-2.5-191206.udpipe')
+udmodel_ita <- udpipe_load_model(file = './italian-postwita-ud-2.5-191206.udpipe')
 
 # FEATURE EXTRACTION
 
@@ -35,6 +35,29 @@ vax_ling <- udpipe_df %>%
                           # tagging most common italian' negators into a new
                           # category called "NEGATOR"
 
+
+# Cleaning
+stopwords <- tibble(lemma = c("essere","avere","fare","dovere", "potere","volere", "anche", 
+                              "come", "quando", "dove", "ovunque", "dovunque", "chiunque",
+                              "perché", "poiché", "affinché", "dopodiche", "quanto","su",
+                              "giù", "ora", "appena", "già", "più", "vaccino", "vaccinazione",
+                              "vaccini","vaccinare", "vaccinato", "ancora", "oggi", "ieri",
+                              "casi", "caso", "nuovo"))
+
+vax_clean <-vax_ling %>%
+  select(c(doc_id, token_id, date, token, lemma, pos = upos, 
+           hashtags, favourites_count, followers_count, 
+           retweet_count, statuses_count, quote_count, verified,
+           reply_count, txt_original, screen_name)) %>%  
+  mutate(lemma = tolower(lemma),
+         lemma = str_remove_all(lemma, "^\\>+")) %>% 
+  filter(pos %in% c("NOUN","VERB","ADV","ADJ", "NEGATOR")) %>% 
+  mutate(lemma = str_replace_all(lemma, "vaccio", "vaccino"), # replace a bad udpipe lemmatization of "vaccino"
+         pos = ifelse(lemma == "vaccino", "NOUN", pos)) %>%
+  filter(nchar(lemma) > 1) %>% # get rid of nchar <= 1 words
+  anti_join(stopwords)
+
+
 # POS ANALYSIS
 
 pos <- vax_ling %>%
@@ -44,3 +67,28 @@ pos <- vax_ling %>%
   count(sort = TRUE) %>% 
   ungroup() %>% 
   mutate(percent = round(n/sum(n)*100, digits = 2))
+
+plot <- pos %>%
+  ggplot(aes(x = reorder(upos, -percent), y = percent, fill = upos)) +
+  geom_bar(stat = "identity") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1,
+                                   colour = ifelse(pos$upos == "NOUN" | pos$upos == "VERB" | pos$upos =="ADJ" | pos$upos == "ADV", "red", "blue")),
+        axis.line = element_blank(),
+        axis.ticks.x.bottom = element_blank(),
+        legend.title = element_blank(),
+        legend.position = "none") +
+  viridis::scale_fill_viridis(discrete = TRUE) +
+  ylab("Frequency %")+
+  xlab(NULL) +
+  labs(title = "Fig 1 -   POS: Part Of Speech Tagging",
+       subtitle = "Red coloured the four semantic Pos: Nouns, Verbs, Adjectives and Adverbs")
+  
+ggsave(filename = "PartOfSpeech.png",
+       path = "./images",
+       plot = plot,
+       width = 17, 
+       height = 12,
+       units = "cm",
+       dpi = 300)
+

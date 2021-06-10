@@ -1,5 +1,5 @@
 library(rtweet)
-library(tidyverse) 
+library(tidyverse)
 
 # Create your personal API_access and then search tweets:
 
@@ -52,4 +52,3 @@ vax_base <- tweets_all %>%
            favourites_count, followers_count, retweet_count, statuses_count, 
            quote_count, reply_count, verified, name, description, coords_coords,
            bbox_coords, emojis))
-

@@ -5,10 +5,9 @@
 # Project 1: A proposito del vaccino anti-COVID19 in Italia: umori e linguaggio.
 ## *Analisi testuale e del sentiment lexicon-based su un campione di tweets.*
 
-# Project Overview
+## **Project Overview**
 
-- Estratto, tramite l'API di Twitter, un corpus di circa 65.000 tweets in linuga italiana, nell'arco di due mesi, da metà Marzo 2021 a metà Maggio 2021, coincidenti con il periodo di maggior discussione del tema nell'opinione pubblica.
-Query su hashtags legati al vaccino anticovid nonché alle due principali case farmaceutiche produttrici: Pfizer e AstraZeneca. Estrazione senza retweets.
+- Estratto, tramite l'API di Twitter, un corpus di circa 65.000 tweets in linuga italiana, nell'arco di due mesi, dal 15 Marzo 2021 al 16 Maggio 2021, coincidenti con il periodo di maggior discussione del tema "vaccini anticovid" nell'opinione pubblica.
 - Creata una lookup table in formato csv con il lessico polarizzato per la lingua italiana, adattato dal Sentix (Basile e Nissim, 2013) a cui è stata aggiunta la classificazione e la gerarchia della semantica affettiva di WordnetAffect (Strapparava e Valitutti, 2004, 2006).
 L'obiettivo è la creazione uno strumento unico e agile per l'analisi del sentiment e del linguaggio affettivo in lingua italiana,
 utilizzabile nel text mining non supervisionato di tipo *lexicon based*.
@@ -17,40 +16,30 @@ utilizzabile nel text mining non supervisionato di tipo *lexicon based*.
 - Questo progetto è preliminare al secondo: creazione di un modello di classificazione e un labelled training database (NEG vs POS)
 per la Sentiment Analisi dei tweets in relazione al tema dei vaccini.
 
-# Codice e risorse
+### **Codice e risorse**
 
-R 4.0.4 e RStudio 1.4.1103.
-Packages: rtweet, tidyverse, rvest, udpipe, topicmodels, wordcloud2.
+Last R and RStudio versions.
+Main Packages: rtweet, tidyverse, rvest, udpipe.
 
-- Per la creazione del lessico:
-  1. [Sentix, di Basile e Nissim (2013)](http://valeriobasile.github.io/twita/sentix.html);
-  2. [WordNetAffect, di Strapparava e Valitutti, 2004, 2006](https://wndomains.fbk.eu/wnaffect.html) Utilizzata la versione WNA 1.1 con synsets-offsets WordNet (v 3.0).
+- Per la creazione del lessico: [OpeNER Sentiment Lexicon Italian](http://hdl.handle.net/20.500.11752/ILC-73) di: Russo, Irene; Frontini, Francesca and Quochi, Valeria, 2016, OpeNER Sentiment Lexicon Italian - LMF, ILC-CNR for CLARIN-IT repository hosted at Institute for Computational Linguistics "A. Zampolli", National Research Council, in Pisa, 
+
 - Per la feature extraction: il language model italiano, basato sulle Universal Dependencies (CoNLL-U format), addestrato su un corpus di tweets:
-  [UD Italian PoSTWITA vers. 2.5 di Bosco e Sanguinetti (2018)](https://universaldependencies.org/treebanks/it_postwita/index.html)
-- Per l'individuazione delle espressioni polirematiche: La digital library [IntraText](http://www.intratext.com/)
+#   [UD Italian PoSTWITA vers. 2.5 di Bosco e Sanguinetti (2018)](https://universaldependencies.org/treebanks/it_postwita/index.html)
 - Per il sentiment delle emojis: [Emoji Sentiment Ranking v 1.0, di Kralj Novak, Smailovic, Sluban, Mozetic, 2015](http://kt.ijs.si/data/Emoji_sentiment_ranking/index.html)
 - Per lo scraping delle icone emojis nel grafico ho adattato il seguente script di: [Emil Hvitfeldt](https://www.hvitfeldt.me/blog/real-emojis-in-ggplot2/)
 
-# Preprocessing e Features Extraction
 
-1. Cleaning dei tweets: rimozione delle peculiarità dei tweets, come urls, simboli, caratteri non codificati utf-8.
-2. Estrazione delle Features: Tokenizzazione, Lemmatizzazione e POS Tagging.
-3. Riduzione delle Features: rimozione delle parti del discorso prive di valenza semantica, mantenendo solo: nomi, aggettivi, verbi, avverbi e i negatori.
-
-## References e Licenze
+### **References e Licenze**
 
 Sia per le licenze delle risorse utilizzate che per i rispettivi riferimenti in letteratura, si vedano le relative repositories sopra linkate.
 
-- 
--
--
+- Zaga, Cristina. (2012). TWITTER: UN’ANALISI DELL’ITALIANO NEL MICRO BLOGGING. Italiano LinguaDue. 4. 10.13130/2037-3597/2278. [Link](https://www.researchgate.net/publication/307707857_TWITTER_UN%27ANALISI_DELL%27ITALIANO_NEL_MICRO_BLOGGING)
+- Cimino, Andrea & Cresci, Stefano & Dell'Orletta, Felice & Tesconi, Maurizio. (2014). Linguistically–motivated and Lexicon Features for Sentiment Analysis of Italian Tweets. 10.12871/clicit2014214 [Link](https://www.researchgate.net/publication/272480560_Linguistically-motivated_and_Lexicon_Features_for_Sentiment_Analysis_of_Italian_Tweets)
+- Musto, Cataldo & Semeraro, Giovanni & Polignano, Marco. (2014). A comparison of lexicon-based approaches for sentiment analysis of microblog. CEUR Workshop Proceedings. 1314. 59-68.
+[Link](https://www.researchgate.net/publication/287871786_A_comparison_of_lexicon-based_approaches_for_sentiment_analysis_of_microblog)
+- ... under construction
 
-## [1 - Analisi linguistiche]()
+## [Analisi del Sentiment]()
 
-## [2 - Analisi del sentiment e delle emozioni]()
+# Project 2: Sentiment dei discorsi sul vaccino anti-COVID19 in Italia: modelli di classificazione dei tweets.*under construction*
 
-
-
-# Project 2: Sentiment dei discorsi sul vaccino anti-COVID19 in Italia: modelli di classificazione dei tweets. 
-
-## *under construction*
