@@ -24,7 +24,7 @@ Main Packages: rtweet, tidyverse, rvest, udpipe.
 - Per la creazione del lessico: [OpeNER Sentiment Lexicon Italian](http://hdl.handle.net/20.500.11752/ILC-73) di: Russo, Irene; Frontini, Francesca and Quochi, Valeria, 2016, OpeNER Sentiment Lexicon Italian - LMF, ILC-CNR for CLARIN-IT repository hosted at Institute for Computational Linguistics "A. Zampolli", National Research Council, in Pisa, 
 
 - Per la feature extraction: il language model italiano, basato sulle Universal Dependencies (CoNLL-U format), addestrato su un corpus di tweets:
-#   [UD Italian PoSTWITA vers. 2.5 di Bosco e Sanguinetti (2018)](https://universaldependencies.org/treebanks/it_postwita/index.html)
+  [UD Italian PoSTWITA vers. 2.5 di Bosco e Sanguinetti (2018)](https://universaldependencies.org/treebanks/it_postwita/index.html)
 - Per il sentiment delle emojis: [Emoji Sentiment Ranking v 1.0, di Kralj Novak, Smailovic, Sluban, Mozetic, 2015](http://kt.ijs.si/data/Emoji_sentiment_ranking/index.html)
 - Per lo scraping delle icone emojis nel grafico ho adattato il seguente script di: [Emil Hvitfeldt](https://www.hvitfeldt.me/blog/real-emojis-in-ggplot2/)
 
@@ -39,7 +39,7 @@ Sia per le licenze delle risorse utilizzate che per i rispettivi riferimenti in 
 [Link](https://www.researchgate.net/publication/287871786_A_comparison_of_lexicon-based_approaches_for_sentiment_analysis_of_microblog)
 - ... under construction
 
-## [Analisi del Sentiment]()
+## [Analisi del Sentiment](https://github.com/Gabmi73/Covid_Language/blob/master/Analysis.md)
 
 # Project 2: Sentiment dei discorsi sul vaccino anti-COVID19 in Italia: modelli di classificazione dei tweets.*under construction*
 
