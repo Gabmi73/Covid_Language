@@ -31,13 +31,35 @@ Il Grafico 1 mostra la frequenza delle parti del discorso denotando un elevato n
 
 ### *ANALISI DEL SENTIMENT*
 
-.. under construction
+Il sentiment (fig. 2) si distribuisce normalmente ma appare più polarizzato al negativo anche se il suo valore trend non è marcatamente negativo. Si nota tuttavia un andamento lievemente positivo nelle due settimane finali di aprile, circa dal 18 al 30.
+Spiccano (fig. 3) almento due gruppi di giorni con un'alta produzione di tweets/ parole al cui interno appaiono i più alti picchi di sentiment sia negativi che positivi.
+Quattro giorni, annche se non caratterizzati da alta produzione di parole, sono isolati: due ad alta negatività e due ad alta positività. 
+
 
 ![fig2](/images/02_sentiment.png)
 
 
 ![fig3](/images/03_tw_day.png)
 
+Andiamo ad analizzarli nel dettaglio e vedere quali parole sono maggiormente caratteristiche, tentando, tramite lo scoring Tf-Idf, una loro tematizzazione (non ho analizzato il Topic Modeling perché la natura dei tweets è già di per sé suddivisa in argomenti, tramite gli hashtags. Inoltre mi interessano le parole più caratteristiche di ogni singolo giorno dei 63 del corpus e creare un modello con 63 topic non ha senso):
+
+- Gruppo 1) dal 16 al 19 marzo 2021
+
+I primi due giorni sono caratterizzati da alta negatività mentre il 18 il picco va al polo opposto con il più alto livello registrato nel corpus, rappresenta e il giorno successivo si mantiene positivo anche se di meno.
+
+![w1](/images/Words_g1.png)
+
+- Gruppo 2) dal 06 al 09 aprile
+
+Il primo giorno è altamente negativo mentre i due successivi sono positivi anche se non marcatamente.
+
+![w2](/images/Words_g2.png)
+
+- Giorni singoli: 15/03 - 26/04 - 03/05
+
+![w3](/images/Words_1503.png)
+![w4](/images/Words_2604.png)
+![w5](/images/Words_0305.png)
 
 ![fig4](/images/04_top50_emojis.png)
 

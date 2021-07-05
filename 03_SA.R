@@ -193,16 +193,21 @@ sent_words %>%
 dev.off()
 
 # 2) NOUNS AND ADJECTIVES POLARIZED
+# WORDS FREQ NEG EXCLUDED
 
-figPath = system.file("examples/t.png",package = "wordcloud2")
-
-w2 <- words %>%
+words_tw <- sent_words %>%
+  filter(!str_detect(pos, "NEGATOR")) %>%
+  count(lemma, polarity, pos, sort = TRUE) %>% 
+  mutate(polarity = ifelse(polarity == 1, "Positive", "Negative")) %>%
   filter(str_detect(pos, c("NOUN|ADJ"))) %>%
   select(word = lemma, freq = n) %>% 
   mutate(word = factor(word)) %>%
   slice(1:230) %>% 
-  wordcloud2(figPath = figPath, backgroundColor = "mintcream",
+  wordcloud2(figPath = system.file("examples/t.png",package = "wordcloud2"),
+             backgroundColor = "mintcream",
              shuffle = FALSE)
+
+dev.off()
 
 
 # creating labelled dataset
