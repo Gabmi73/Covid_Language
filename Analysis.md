@@ -32,8 +32,8 @@ Il Grafico 1 mostra la frequenza delle parti del discorso denotando un elevato n
 ### *ANALISI DEL SENTIMENT*
 
 Il sentiment (fig. 2) si distribuisce normalmente ma appare più polarizzato al negativo anche se il suo valore trend non è marcatamente negativo. Si nota tuttavia un andamento lievemente positivo nelle due settimane finali di aprile, circa dal 18 al 30.
-Spiccano (fig. 3) almento due gruppi di giorni con un'alta produzione di tweets/ parole al cui interno appaiono i più alti picchi di sentiment sia negativi che positivi.
-Quattro giorni, annche se non caratterizzati da alta produzione di parole, sono isolati: due ad alta negatività e due ad alta positività. 
+Spiccano almento due gruppi di giorni con i più alti picchi di sentiment sia negativi che positivi.
+
 
 
 ![fig2](/images/02_sentiment.png)
@@ -41,34 +41,32 @@ Quattro giorni, annche se non caratterizzati da alta produzione di parole, sono 
 
 ![fig3](/images/03_tw_day.png)
 
-Andiamo ad analizzarli nel dettaglio e vedere quali parole sono maggiormente caratteristiche, tentando, tramite lo scoring Tf-Idf, una loro tematizzazione (non ho analizzato il Topic Modeling perché la natura dei tweets è già di per sé suddivisa in argomenti, tramite gli hashtags. Inoltre mi interessano le parole più caratteristiche di ogni singolo giorno dei 63 del corpus e creare un modello con 63 topic non ha senso):
+Visualizziamo nel dettaglio i due gruppi e un giorno singolo in base al sentiment e le parole che sono maggiormente caratteristiche, tentando, tramite lo scoring Tf-Idf, una loro tematizzazione (non ho analizzato il Topic Modeling perché la natura dei tweets è già di per sé suddivisa in argomenti, tramite gli hashtags. Inoltre mi interessano le parole più caratteristiche di ogni giorno):
 
-- Gruppo 1) dal 16 al 19 marzo 2021
-
-I primi due giorni sono caratterizzati da alta negatività mentre il 18 il picco va al polo opposto con il più alto livello registrato nel corpus, rappresenta e il giorno successivo si mantiene positivo anche se di meno.
+- Gruppo 1) dal 15 al 17 marzo. Polarizzazione marcatamente negativa. Si registra un' alta percentuale di numero di parole del corpus 18,13 % (il 16 marzo è il giorno con il numero assoluto più alto dell'intero corpus: 11,64 %)
 
 ![w1](/images/Words_g1.png)
 
-- Gruppo 2) dal 06 al 09 aprile 
-
-Il primo giorno è altamente negativo mentre i due successivi sono positivi anche se non marcatamente.
+- Gruppo 2) dal 18 al 20 marzo. Polarizzazione marcatemente positiva. Anche in questo gruppo la percentuale totale delle parole è 11,98 %
 
 ![w2](/images/Words_g2.png)
 
-- Giorni singoli: 15/03 - 26/04 - 03/05
+- 07 aprile. Polarizzazione marcatamente negativa. Percentuale parole 4,71 %.
 
-![w3](/images/Words_1503.png)
-![w4](/images/Words_2604.png)
-![w5](/images/Words_0305.png)
+![w4](/images/Words_0704.png)
 
-![fig4](/images/04_top50_emojis.png)
-
+Di seguito invece la wordcloud delle parole più frequenti dell'intero corpus e di quelle, sempre più frequenti, dei due poli del seintiment, positivo e negativo
 
 ![wc1](/images/WC_Twitter.jpg)
 
 
 ![wc2](/images/POS.png)
 ![wc3](/images/NEG_.png)
+
+
+
+
+![fig4](/images/04_top50_emojis.png)
 
 
 ... under construction
