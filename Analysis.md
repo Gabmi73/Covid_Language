@@ -49,7 +49,7 @@ I primi due giorni sono caratterizzati da alta negatività mentre il 18 il picco
 
 ![w1](/images/Words_g1.png)
 
-- Gruppo 2) dal 06 al 09 aprile
+- Gruppo 2) dal 06 al 09 aprile 
 
 Il primo giorno è altamente negativo mentre i due successivi sono positivi anche se non marcatamente.
 
