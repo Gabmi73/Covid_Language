@@ -1,4 +1,4 @@
-# Get vax_ling from script 02_LA
+# Get vax_ling from script 02_LA 
 
 library(tidyverse)
 library(cowplot)
@@ -109,7 +109,7 @@ ggsave(filename = "sentiment.png",
        width = 22,
        height = 16,
        units = "cm",
-       dpi = 300)
+       dpi = 300) 
 
 # Tweets per day with statistics 
 counts_n <- vax_base %>% group_by(date) %>% count() %>% ungroup() %>% rename("All" = n)
