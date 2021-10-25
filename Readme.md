@@ -10,8 +10,8 @@
 
 ### **Codice e risorse**
 
-Last R and RStudio versions.
-Main Packages: rtweet, tidyverse, rvest, udpipe.
+- R 4.1.1 and RStudio 2021.09.0 Build 351. Main Packages: rtweet, tidyverse, rvest, udpipe.
+- Python 3.8.11
 
 - Per la creazione del lessico: [OpeNER Sentiment Lexicon Italian](http://hdl.handle.net/20.500.11752/ILC-73) di: Russo, Irene; Frontini, Francesca and Quochi, Valeria, 2016, OpeNER Sentiment Lexicon Italian - LMF, ILC-CNR for CLARIN-IT repository hosted at Institute for Computational Linguistics "A. Zampolli", National Research Council, in Pisa, 
 - Per la feature extraction: il language model italiano, basato sulle Universal Dependencies (CoNLL-U format), addestrato su un corpus di tweets:
