@@ -99,14 +99,14 @@ inset <- ggplot(sent_day, aes(polarity)) +
         panel.grid.minor.y = element_blank(),
         panel.grid.minor.x = element_blank())
 
-plot <- ggdraw() +
+plot_sent <- ggdraw() +
   draw_plot(main_p) +
-  draw_plot(inset, x = 0.68, y = 0.71, width = .3, height = .20)
+  draw_plot(inset, x = 0.62, y = 0.68, width = .3, height = .20)
 
 ggsave(filename = "sentiment.png",
        path = "./images",
        plot = plot,
-       width = 22, 
+       width = 22,
        height = 16,
        units = "cm",
        dpi = 300)
@@ -146,20 +146,20 @@ plot_c <- counts %>%
         axis.ticks.y = element_blank(),
         legend.position=c(.90,.65)) +
   guides(fill=guide_legend(title="Tweets")) +
-  scale_x_date(breaks = function(x) seq.Date(from = as.Date("2021-03-15"), to = as.Date("2021-05-16"), by = 1),
+  scale_x_date(breaks = function(x) seq.Date(from = as.Date("2021-03-15"), to = as.Date("2021-05-16"), by = 3),
                date_labels = "%b-%d",
                limits = c(as.Date("2021-03-14"),as.Date("2021-05-17")), expand = c(0, 0)) +
   scale_fill_manual(values = c("orange","deepskyblue4")) +
   scale_y_continuous(limits=c(0,8000), expand = c(0, 0))
 
-plot_all <- ggdraw() +
+plot_tw_day <- ggdraw() +
   draw_plot(plot_c) +
-  draw_plot(texttab, x = 0.62, y = 0.70, width = .3, height = .3)
+  draw_plot(texttab, x = 0.32, y = 0.60, width = .3, height = .3)
 
 ggsave(filename = "tw_day.png",
        path = "./images",
        plot = plot_all,
-       width = 32, 
+       width = 32,
        height = 18,
        units = "cm",
        dpi = 300)

@@ -68,7 +68,7 @@ pos <- vax_ling %>%
   ungroup() %>% 
   mutate(percent = round(n/sum(n)*100, digits = 2))
 
-plot <- pos %>%
+plot_pos <- pos %>%
   ggplot(aes(x = reorder(upos, -percent), y = percent, fill = upos)) +
   geom_bar(stat = "identity") +
   theme_classic() +
@@ -86,8 +86,8 @@ plot <- pos %>%
   
 ggsave(filename = "PartOfSpeech.png",
        path = "./images",
-       plot = plot,
-       width = 17, 
+       plot = plot_pos,
+       width = 17,
        height = 12,
        units = "cm",
        dpi = 300)
