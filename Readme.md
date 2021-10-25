@@ -27,5 +27,5 @@ Sia per le licenze delle risorse utilizzate che per i rispettivi riferimenti in 
 - Cimino, Andrea & Cresci, Stefano & Dell'Orletta, Felice & Tesconi, Maurizio. (2014). Linguistically–motivated and Lexicon Features for Sentiment Analysis of Italian Tweets. 10.12871/clicit2014214 [Link](https://www.researchgate.net/publication/272480560_Linguistically-motivated_and_Lexicon_Features_for_Sentiment_Analysis_of_Italian_Tweets)
 - Musto, Cataldo & Semeraro, Giovanni & Polignano, Marco. (2014). A comparison of lexicon-based approaches for sentiment analysis of microblog. CEUR Workshop Proceedings. 1314. 59-68. [Link](https://www.researchgate.net/publication/287871786_A_comparison_of_lexicon-based_approaches_for_sentiment_analysis_of_microblog)
 
-# [Analisi del Sentiment](https://github.com/Gabmi73/Covid_Language/blob/master/Sent_Analysis.md)
+# [Analisi del Sentiment](https://github.com/Gabmi73/Covid_Language/blob/master/Sent_Analysis.md)  (link)
 
