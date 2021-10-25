@@ -1,13 +1,9 @@
-### ** under construction **
-
-### for English version[see here]:
-
-# Project 1: A proposito del vaccino anti-COVID19 in Italia: umori e linguaggio.
-## *Analisi testuale e del sentiment lexicon-based su un campione di tweets.*
+# A proposito del vaccino anti-COVID19 in Italia: umori e linguaggio.
+## *Analisi testuale e del sentiment lexicon-based su un campione di tweets.* - Uno studio preliminare
 
 ## **Project Overview**
 
-- Estratto, tramite l'API di Twitter, un corpus di circa 65.000 tweets in linuga italiana, nell'arco di due mesi, dal 15 Marzo 2021 al 16 Maggio 2021, coincidenti con il periodo di maggior discussione del tema "vaccini anticovid" nell'opinione pubblica.
+- Estratto, tramite l'API di Twitter, un corpus di circa 65.000 tweets in linuga italiana, nell'arco di due mesi, dal 15 Marzo 2021 al 16 Maggio 2021, coincidenti con il periodo periodo di maggior discussione sul tema "vaccini anticovid" nell'opinione pubblica.
 - Analisi linguistica dei tweets: frequenze, misure lessicometriche, parti del discorso e wordcloud.
 - Analisi del sentiment polarizzato positivo vs negativo e del sentiment delle Emojis.
 - Questo progetto è anche preliminare ai modelli di Machine e Deep Learning del secondo: creazione di un databese sia labelled (NEG vs POS training/test) sia unlabelled per le predictions di altri modelli.
@@ -33,7 +29,4 @@ Sia per le licenze delle risorse utilizzate che per i rispettivi riferimenti in 
 - ... under construction
 
 ## [Analisi del Sentiment](https://github.com/Gabmi73/Covid_Language/blob/master/Analysis.md)
-
-# Project 2: Sentiment dei discorsi sul vaccino anti-COVID19 in Italia: modelli di classificazione dei tweets.
-*under construction*
 
