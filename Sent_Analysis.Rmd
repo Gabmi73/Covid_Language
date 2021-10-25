@@ -103,6 +103,6 @@ Di seguito invece la wordcloud delle parole più frequenti dell'intero corpus e 
 
 
 L'utilizzo delle Emojis è pari al solo 16,82 % del totale dei tweets. Il sentiment risulta tuttavia polarizzato positivamente  
-
+  
 
 ![](images/04_top50_emojis.png)

@@ -1,5 +1,5 @@
 # Linguistic analysis
-# Get vax_base from script 01_Vax_Base 
+# Get vax_base from script 01_Vax_Base  
 
 library(tidyverse)
 library(udpipe)

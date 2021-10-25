@@ -1,4 +1,4 @@
-# Get vax_ling from script 02_LA 
+# Get vax_ling from script 02_LA  
 
 library(tidyverse)
 library(cowplot)
