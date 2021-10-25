@@ -28,5 +28,5 @@ Sia per le licenze delle risorse utilizzate che per i rispettivi riferimenti in 
 - Musto, Cataldo & Semeraro, Giovanni & Polignano, Marco. (2014). A comparison of lexicon-based approaches for sentiment analysis of microblog. CEUR Workshop Proceedings. 1314. 59-68. [Link](https://www.researchgate.net/publication/287871786_A_comparison_of_lexicon-based_approaches_for_sentiment_analysis_of_microblog)
 - ... under construction
 
-## [Analisi del Sentiment](https://github.com/Gabmi73/Covid_Language/blob/master/Analysis.md)
+## [Analisi del Sentiment](https://github.com/Gabmi73/Covid_Language/blob/master/Sent_Analysis.md)
 
